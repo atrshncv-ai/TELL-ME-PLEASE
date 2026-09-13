@@ -42,6 +42,24 @@ export function stripEmoji(text: string): string {
 }
 
 /**
+ * Убирает маркдаун из текста ПЕРЕД озвучкой: LLM любит **жирный**,
+ * *курсив*, `код` и #заголовки, а speechSynthesis произносит звёздочки
+ * и решётки вслух («звезда звезда»), что путает ребёнка. В чате разметка
+ * остаётся — фильтр только для речи. Применяется в обоих каналах
+ * (браузерный speechSynthesis и серверный /api/tts через useServerTts).
+ */
+export function stripMarkdown(text: string): string {
+  return text
+    .replace(/(\*\*|__)(.*?)\1/g, "$2") // **жирный**, __жирный__
+    .replace(/(^|[\s(>"'])(\*|_)(?=\S)(.*?)(?<=\S)\2/g, "$1$3") // *курсив*, _курсив_
+    .replace(/~~(.*?)~~/g, "$1") // ~~зачёркнутый~~
+    .replace(/`([^`]*)`/g, "$1") // `код`
+    .replace(/^#{1,6}\s+/gm, "") // # заголовки
+    .replace(/\[([^\]]*)\]\([^)]*\)/g, "$1") // [текст](ссылка) → текст
+    .replace(/\s{2,}/g, " ")
+    .trim()
+}
+/**
  * Выбор лучшего английского голоса по качеству И надёжности:
  *   1) ЛОКАЛЬНЫЕ системные голоса (Apple/macOS: Samantha, Daniel, Karen…;
  *      системные TTS) — работают офлайн, без скачивания;
@@ -243,8 +261,9 @@ export function useSpeechSynthesis() {
       // первом жесте, а лишний speak+cancel в одном тике может «съесть»
       // реальную речь (известный глюк Chrome).
       synth.cancel()
-      // Эмодзи в речи не произносим (бот не должен «говорить» смайлики)
-      queueRef.current = splitSentences(stripEmoji(text))
+      // Эмодзи и маркдаун в речи не произносим (бот не должен «говорить»
+      // смайлики и звёздочки **жирного** текста)
+      queueRef.current = splitSentences(stripMarkdown(stripEmoji(text)))
       if (queueRef.current.length === 0) return
       speakingRef.current = true
       setSpeaking(true)

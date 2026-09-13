@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from "react"
 import { isSpeechAllowed, useStopSpeechOnGate } from "@/lib/useSound"
-import { stripEmoji } from "@/lib/useSpeechSynthesis"
+import { stripEmoji, stripMarkdown } from "@/lib/useSpeechSynthesis"
 
 /**
  * Серверный TTS-фолбэк (Q6, тикет W4-T04): озвучка через /api/tts, когда
@@ -60,7 +60,7 @@ export function useServerTts(voice = "en-GB-SoniaNeural") {
     (text: string) => {
       // Центральный речевой гейт (R04): до запроса /api/tts — ни сети, ни звука.
       if (!isSpeechAllowed()) return
-      const clean = stripEmoji(text)
+      const clean = stripMarkdown(stripEmoji(text))
       if (!clean.trim()) return
       const audio = ensureAudio()
       audio.pause()

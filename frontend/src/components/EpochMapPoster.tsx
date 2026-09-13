@@ -98,6 +98,29 @@ export default function EpochMapPoster({ progress, onFallback }: EpochMapPosterP
         className="block w-full"
         onError={() => onFallback?.()}
       />
+      {/* Подпись подвала 4-й колонки: в растре плаката там «how long»,
+          клиентка просит «Длительность». Текст вшит в растр намертво,
+          поэтому перекрываем его плашкой в цвет подвала (#50c0da).
+          Плашка уже робота (x≥3135) и центрирует текст по центру
+          исходной подписи (x≈2880). */}
+      <svg
+        viewBox="0 0 3401.57 1700.79"
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 block h-full w-full"
+      >
+        <rect x="2519" y="1611.9" width="581" height="60.4" fill="#50c0da" />
+        <text
+          x="2880"
+          y="1642"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fill="#1e1e1c"
+          fontSize="30"
+          fontWeight="800"
+        >
+          Длительность
+        </text>
+      </svg>
       {EPOCH_META.map((meta) => {
         const x = CELL_X0 + COL_INDEX[meta.cell.col] * CELL_DX
         const y = CELL_Y0 + ROW_INDEX[meta.cell.row] * CELL_DY

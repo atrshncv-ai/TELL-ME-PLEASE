@@ -24,7 +24,7 @@ export interface StreamChatParams {
 
 // --- Конфигурация из env (дефолты 1:1 из backend/app/core/config.py) ---
 const LLM_API_BASE = process.env.LLM_API_BASE || "https://opencode.ai/zen/v1"
-const LLM_MODEL = process.env.LLM_MODEL || "ling-3.0-flash-free" // primary (backward compat)
+const LLM_MODEL = process.env.LLM_MODEL || "mimo-v2.5-free" // primary (backward compat)
 const LLM_MODELS = (process.env.LLM_MODELS || "")
   .split(",")
   .map((m) => m.trim())
