@@ -98,16 +98,56 @@ export default function EpochMapPoster({ progress, onFallback }: EpochMapPosterP
         className="block w-full"
         onError={() => onFallback?.()}
       />
-      {/* Подпись подвала 4-й колонки: в растре плаката там «how long»,
-          клиентка просит «Длительность». Текст вшит в растр намертво,
-          поэтому перекрываем его плашкой в цвет подвала (#50c0da).
-          Плашка уже робота (x≥3135) и центрирует текст по центру
-          исходной подписи (x≈2880). */}
+      {/* Подписи подвалов колонок: в растре плаката там мелкие подписи
+          («Факт (When?)», «… (at what time?)», «… (by what time?)»,
+          «how long»), клиентка просит оставить только крупные русские
+          слова. Текст вшит в растр намертво, поэтому перекрываем подвалы
+          плашками в цвет подвала (#50c0da). Координаты — из rect'ов
+          исходного SVG (st1/st6/st7/st5). Плашка 4-й колонки уже робота
+          (x≥3135) и центрирует текст по центру исходной подписи (x≈2880).
+          Тексты остальных подвалов отцентрованы так же (проверено по
+          контурам глифов). */}
       <svg
         viewBox="0 0 3401.57 1700.79"
         aria-hidden="true"
         className="pointer-events-none absolute inset-0 block h-full w-full"
       >
+        <rect x="300.3" y="1608.7" width="721.8" height="63.2" fill="#50c0da" />
+        <text
+          x="661.2"
+          y="1640.3"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fill="#1e1e1c"
+          fontSize="30"
+          fontWeight="800"
+        >
+          Факт
+        </text>
+        <rect x="1040.2" y="1612" width="717.5" height="59.9" fill="#50c0da" />
+        <text
+          x="1399"
+          y="1642"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fill="#1e1e1c"
+          fontSize="30"
+          fontWeight="800"
+        >
+          Процесс
+        </text>
+        <rect x="1779.1" y="1612" width="721.8" height="60.1" fill="#50c0da" />
+        <text
+          x="2140"
+          y="1642"
+          textAnchor="middle"
+          dominantBaseline="central"
+          fill="#1e1e1c"
+          fontSize="30"
+          fontWeight="800"
+        >
+          Результат
+        </text>
         <rect x="2519" y="1611.9" width="581" height="60.4" fill="#50c0da" />
         <text
           x="2880"
