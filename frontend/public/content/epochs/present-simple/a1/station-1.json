@@ -51,15 +51,6 @@
       "answer": "is not"
     },
     {
-      "question": "He ___ a teacher.",
-      "options": [
-        "isn't",
-        "aren't",
-        "'m not"
-      ],
-      "answer": "isn't"
-    },
-    {
       "question": "___ you ready?",
       "options": [
         "Am",
@@ -105,15 +96,6 @@
       "answer": "has got"
     },
     {
-      "question": "He ___ two brothers.",
-      "options": [
-        "have got",
-        "has got",
-        "have"
-      ],
-      "answer": "has got"
-    },
-    {
       "question": "We ___ a nice house.",
       "options": [
         "have got",
@@ -134,29 +116,11 @@
     {
       "question": "I ___ got a computer.",
       "options": [
-        "have not",
-        "has not",
-        "has"
-      ],
-      "answer": "have not"
-    },
-    {
-      "question": "I ___ got a computer.",
-      "options": [
         "haven't",
         "hasn't",
         "isn't"
       ],
       "answer": "haven't"
-    },
-    {
-      "question": "She ___ got a cat.",
-      "options": [
-        "have not",
-        "has not",
-        "have"
-      ],
-      "answer": "has not"
     },
     {
       "question": "She ___ got a cat.",
@@ -211,24 +175,6 @@
         "are"
       ],
       "answer": "is"
-    },
-    {
-      "question": "I ___ got a new pencil case.",
-      "options": [
-        "have",
-        "has",
-        "have got"
-      ],
-      "answer": "have"
-    },
-    {
-      "question": "He ___ a cool skateboard.",
-      "options": [
-        "have got",
-        "has got",
-        "have"
-      ],
-      "answer": "has got"
     },
     {
       "question": "___ your brother got a dog?",
