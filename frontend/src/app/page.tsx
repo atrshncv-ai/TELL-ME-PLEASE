@@ -4,6 +4,7 @@ import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { motion } from "framer-motion"
 import AdminLoginModal from "@/components/AdminLoginModal"
+import ContactBlock from "@/components/ContactBlock"
 import RightsFooter from "@/components/RightsFooter"
 
 /**
@@ -86,6 +87,15 @@ export default function Home() {
         >
           Начать играть →
         </motion.button>
+
+        {/* Блок «Купить карту и связаться» (прогон 2026-10-02, R02–R06).
+            Стоит между «Начать играть» и «Мемы» — то есть в первом экране
+            без прокрутки на телефоне (спека, история 8). Кнопки MAX и ВК
+            ведут прямо в мессенджеры Ирины: покупка карты и продление подписки
+            на год происходят в переписке, платёжа на сайте нет (Р1). */}
+        <motion.div variants={item} className="mt-2 w-full">
+          <ContactBlock />
+        </motion.div>
 
         {/* «Что тебя ждёт» — 5 опций клиентки (G3): Инструктаж, Миссии,
             Общение, Квесты, Уровни сложности. */}
