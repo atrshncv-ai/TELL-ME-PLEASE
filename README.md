@@ -269,3 +269,8 @@ npm run dev:local         # next dev --turbopack
 ## Лицензия
 
 Лицензия не указана.
+
+## License / Лицензия
+
+Released under the MIT License. See [LICENSE](LICENSE).
+Проект распространяется по лицензии MIT. См. [LICENSE](LICENSE).
